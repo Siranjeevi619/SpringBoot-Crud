@@ -4,10 +4,7 @@ package com.crud.spring.SpringBootCrud.Controller;
 import com.crud.spring.SpringBootCrud.model.Product;
 import com.crud.spring.SpringBootCrud.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +23,12 @@ public class ProductController {
     @GetMapping("/product/{id}")
     public Product getProduct(@PathVariable int id) {
         return ProductService.getProductById(id);
+    }
+
+    @PostMapping("/product/add")
+    public Product addProduct(@RequestBody Product product) {
+        return ProductService.addProduct(product);
+
     }
 
 

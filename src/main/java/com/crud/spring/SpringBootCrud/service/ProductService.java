@@ -3,16 +3,13 @@ package com.crud.spring.SpringBootCrud.service;
 import com.crud.spring.SpringBootCrud.model.Product;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ProductService {
 
-    List<Product> Products = Arrays.asList(new Product(2, "VICTUS FA0555TX", 74000),
-            new Product(3, "Iphone 15", 50000), new Product(1, "Realme 6", 18500));
+    List<Product> Products = new ArrayList<>(Arrays.asList(new Product(2, "VICTUS FA0555TX", 74000),
+            new Product(3, "Iphone 15", 50000), new Product(1, "Realme 6", 18500)));
     public List<Product> getProducts() {
         Collections.sort(Products,  new Comparator<Product>() {
             @Override
@@ -38,6 +35,14 @@ public class ProductService {
         }
 
         return prod;
+    }
+
+    public Product addProduct(Product product){
+//        Products.(product);
+        Products.add(product);
+        System.out.println("Product Added Successfully");
+        System.out.println(product.toString());
+        return product;
     }
 
 }
